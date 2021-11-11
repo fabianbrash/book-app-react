@@ -4,12 +4,31 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import * as serviceWorker from './serviceWorker';
+import { BrowserRouter, Switch, Route } from "react-router-dom";
+import Books from './components/Books';
+import {
+  ChakraProvider,
+  theme,
+} from '@chakra-ui/react';
+
 
 ReactDOM.render(
+  <ChakraProvider theme={theme}>
   <StrictMode>
     <ColorModeScript />
-    <App />
-  </StrictMode>,
+    <BrowserRouter>
+      <Switch>
+        <Route exact path="/">
+          <App />
+        </Route>
+        <Route exact path="/books">
+          <Books />
+        </Route>
+      </Switch>
+      
+    </BrowserRouter>
+  </StrictMode>
+  </ChakraProvider>,
   document.getElementById('root')
 );
 
